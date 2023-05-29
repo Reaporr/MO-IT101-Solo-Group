@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class test {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Prompt for employee information
+        System.out.println("Enter employee name:");
+        String employeeName = scanner.nextLine();
+
+        System.out.println("Enter employee ID:");
+        int employeeID = scanner.nextInt();
+
+        System.out.println("Enter Monthly Basic Pay:");
+        double monthlyrate = scanner.nextDouble();
+
+        System.out.println("Enter hours worked:");
+        double hourlyRate = scanner.nextDouble();
+        
+        System.out.println("Enter hours late worked:");
+        double hourlylate = scanner.nextDouble();
+        
+        System.out.println("Enter Absences:");
+        double absent = scanner.nextDouble();
+        
+
+        // Calculate gross salary
+        double monthly = monthlyrate;
+        double daily = monthlyrate * 12 / 313 / 8;
+        double tardy = hourlylate;
+       
+
+        // Calculate deductions
+        double tax = monthly * 0.2; // Assume 20% tax rate
+        double sss = 562.50; // Fixed insurance deduction
+        double pagibig = 50; // Fixed insurance deduction
+        double philhealth = 250; // Fixed insurance deduction
+        double late = tardy - hourlyRate ; // Fixed deduction
+        double absentt = absent * 8; // Fixed deduction
+        double absenttt = absentt - hourlyRate; // Fixed deduction
+        double perday = daily * 8 - hourlyRate;
+
+        // Calculate net salary
+        double netSalary = monthly - tax - sss - pagibig - philhealth - late - absenttt;
+        double totaldeduc = tax + sss + pagibig + philhealth + late + absenttt;
+
+        // Display payroll information
+        System.out.println("Motor PH Employee Payroll Information");
+        System.out.println("------------------");
+        System.out.println("Employee Name: " + employeeName);
+        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Hourly Rate: P" + daily);
+        System.out.println("Withholding Tax: P" + tax);
+        System.out.println("SSS: P" + sss);
+        System.out.println("pagibig: P" + pagibig);
+        System.out.println("philhealth: P" + philhealth);
+        System.out.println("Tardiness: " + tardy);
+        System.out.println("Absences: " + absent);
+        System.out.println("Total deductions: " + totaldeduc);
+        System.out.println("Net Salary: P" + netSalary);
+
+        // Close scanner
+        scanner.close();
+    }
+}
